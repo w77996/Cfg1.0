@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qx.cfg.dao.CommentReplyMapper" >
+  <resultMap id="BaseResultMap" type="com.qx.cfg.pojo.CommentReply" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="reply_type" property="replyType" jdbcType="TINYINT" />
+    <result column="reply_id" property="replyId" jdbcType="INTEGER" />
+    <result column="reply_content" property="replyContent" jdbcType="VARCHAR" />
+    <result column="to_uid" property="toUid" jdbcType="INTEGER" />
+    <result column="from_uid" property="fromUid" jdbcType="INTEGER" />
+    <result column="from_thumb_img" property="fromThumbImg" jdbcType="VARCHAR" />
+    <result column="from_nickname" property="fromNickname" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="to_nickname" property="toNickname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, comment_id, reply_type, reply_id, reply_content, to_uid, from_uid, from_thumb_img, 
+    from_nickname, create_time, to_nickname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment_reply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comment_reply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qx.cfg.pojo.CommentReply" >
+    insert into comment_reply (id, comment_id, reply_type, 
+      reply_id, reply_content, to_uid, 
+      from_uid, from_thumb_img, from_nickname, 
+      create_time, to_nickname)
+    values (#{id,jdbcType=INTEGER}, #{commentId,jdbcType=INTEGER}, #{replyType,jdbcType=TINYINT}, 
+      #{replyId,jdbcType=INTEGER}, #{replyContent,jdbcType=VARCHAR}, #{toUid,jdbcType=INTEGER}, 
+      #{fromUid,jdbcType=INTEGER}, #{fromThumbImg,jdbcType=VARCHAR}, #{fromNickname,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=INTEGER}, #{toNickname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qx.cfg.pojo.CommentReply" >
+    insert into comment_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="replyType != null" >
+        reply_type,
+      </if>
+      <if test="replyId != null" >
+        reply_id,
+      </if>
+      <if test="replyContent != null" >
+        reply_content,
+      </if>
+      <if test="toUid != null" >
+        to_uid,
+      </if>
+      <if test="fromUid != null" >
+        from_uid,
+      </if>
+      <if test="fromThumbImg != null" >
+        from_thumb_img,
+      </if>
+      <if test="fromNickname != null" >
+        from_nickname,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="toNickname != null" >
+        to_nickname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="replyType != null" >
+        #{replyType,jdbcType=TINYINT},
+      </if>
+      <if test="replyId != null" >
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="toUid != null" >
+        #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="fromUid != null" >
+        #{fromUid,jdbcType=INTEGER},
+      </if>
+      <if test="fromThumbImg != null" >
+        #{fromThumbImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fromNickname != null" >
+        #{fromNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="toNickname != null" >
+        #{toNickname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qx.cfg.pojo.CommentReply" >
+    update comment_reply
+    <set >
+      <if test="commentId != null" >
+        comment_id = #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="replyType != null" >
+        reply_type = #{replyType,jdbcType=TINYINT},
+      </if>
+      <if test="replyId != null" >
+        reply_id = #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="replyContent != null" >
+        reply_content = #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="toUid != null" >
+        to_uid = #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="fromUid != null" >
+        from_uid = #{fromUid,jdbcType=INTEGER},
+      </if>
+      <if test="fromThumbImg != null" >
+        from_thumb_img = #{fromThumbImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fromNickname != null" >
+        from_nickname = #{fromNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="toNickname != null" >
+        to_nickname = #{toNickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qx.cfg.pojo.CommentReply" >
+    update comment_reply
+    set comment_id = #{commentId,jdbcType=INTEGER},
+      reply_type = #{replyType,jdbcType=TINYINT},
+      reply_id = #{replyId,jdbcType=INTEGER},
+      reply_content = #{replyContent,jdbcType=VARCHAR},
+      to_uid = #{toUid,jdbcType=INTEGER},
+      from_uid = #{fromUid,jdbcType=INTEGER},
+      from_thumb_img = #{fromThumbImg,jdbcType=VARCHAR},
+      from_nickname = #{fromNickname,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      to_nickname = #{toNickname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
